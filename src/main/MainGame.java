@@ -1,9 +1,14 @@
 package main;
 
+import battle.MatchManager;
+
 public class MainGame {
 
     public static void main(String[] args) {
-        System.out.println("MOBA 3v3");
-    }
 
+        MatchManager match =
+                new MatchManager();
+
+        match.startMatch();
+    }
 }

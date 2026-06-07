@@ -1,24 +1,7 @@
 package skill;
 
-public class Skill {
+public interface Skill {
 
-    protected String skillName;
-    protected int power;
+    void activate();
 
-    public Skill(String skillName, int power) {
-        this.skillName = skillName;
-        this.power = power;
-    }
-
-    public void useSkill() {
-        System.out.println(skillName + " digunakan.");
-    }
-
-    public String getSkillName() {
-        return skillName;
-    }
-
-    public int getPower() {
-        return power;
-    }
 }

@@ -1,13 +1,13 @@
 package skill;
 
-public class HealSkill extends Skill {
-
-    public HealSkill(String skillName, int power) {
-        super(skillName, power);
-    }
+public class HealSkill
+        implements Skill {
 
     @Override
-    public void useSkill() {
-        System.out.println(skillName + " memulihkan HP sebesar " + power);
+    public void activate(){
+
+        System.out.println(
+                "Heal Skill Activated!"
+        );
     }
 }

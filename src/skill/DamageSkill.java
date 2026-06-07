@@ -1,13 +1,13 @@
 package skill;
 
-public class DamageSkill extends Skill {
-
-    public DamageSkill(String skillName, int power) {
-        super(skillName, power);
-    }
+public class DamageSkill
+        implements Skill {
 
     @Override
-    public void useSkill() {
-        System.out.println(skillName + " memberikan damage sebesar " + power);
+    public void activate(){
+
+        System.out.println(
+                "Damage Skill Activated!"
+        );
     }
 }
