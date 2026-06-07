@@ -24,6 +24,21 @@ public abstract class Hero {
         return hp;
     }
 
+    public int getAttack(){
+        return attack;
+    }
+
+    public void takeDamage(int damage){
+        hp -= damage;
+
+    }
+    public boolean isDead(){
+        return hp <= 0;
+    }
+    public void respawn(){
+        hp = 100;
+        System.out.println(name + " has respawned ");
+    }
     public abstract void useSkill();
 
     public void basicAttack(){

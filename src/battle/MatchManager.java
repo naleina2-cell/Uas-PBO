@@ -1,27 +1,101 @@
 package battle;
-
+import main.GameState;
 import character.*;
 import java.util.Scanner;
+
+private Team teamA = new Team("Team A");
+private Team teamB = new Team("Team B");
 
 public class MatchManager {
 
     private Scanner input = new Scanner(System.in);
+    private GameState state;
+    private Hero playerHero;
 
     public void startMatch() {
+        // 1. LOBBY
+        state = GameState.LOBBY;
+        System.out.println("=== LOBBY ===");
+        // hero picking
+        state = GameState.DRAFT;
+        for (int i = 1; i <= 6; i++) {
 
-        Hero playerHero = chooseHero();
+    System.out.println("\nPLAYER " + i + " PICK HERO");
 
-        System.out.println("\n================================");
-        System.out.println("Hero chosen : " + playerHero.getName());
-        System.out.println("HP           : " + playerHero.getHp());
-        System.out.println("================================\n");
+    Hero hero = chooseHero();
 
-        playerHero.useSkill();
-
-        BattleArena arena = new BattleArena();
-
-        arena.demoPolymorphism();
+    if (i <= 3) {
+        teamA.addHero(hero);
+    } else {
+        teamB.addHero(hero);
     }
+}
+
+        System.out.println("\nHero chosen : " + playerHero.getName());
+        // start battle
+        startBattle();
+    
+    }
+    private void startBattle() {
+
+    state = GameState.IN_GAME;
+
+    System.out.println("\n=== BATTLE STARTED ===");
+
+    new Thread(() -> {
+
+        int timer = 0;
+
+        while (state == GameState.IN_GAME) {
+
+
+            timer++;
+            
+
+            // simulasi battle
+            System.out.println("Battle running... time: " + timer);
+
+            // regen tiap 30 detik (simulasi)
+            if (timer % 30 == 0) {
+                System.out.println("Hero regen +15 HP");
+            }
+
+            // creep spawn every 10 seconds (simulasi)
+            if (timer % 10 == 0) {
+                System.out.println("Creep spawned");
+            }
+
+            // WIN CONDITION CONTOH (dummy)
+            if (timer == 120) {
+                state = GameState.FINISHED;
+                System.out.println("GAME FINISHED!");
+            if (timer % 5 == 0) {
+
+    towerA.takeDamage(50);
+    towerB.takeDamage(50);
+
+    System.out.println("Tower A HP : " + towerA.getHp());
+    System.out.println("Tower B HP : " + towerB.getHp());
+}
+8. Win Condition: jika salah satu tower hancur, game selesai
+            if (towerA.isDestroyed()) {
+                state = GameState.FINISHED;
+                System.out.println("Team B wins!");
+            }
+            if (towerB.isDestroyed()) {
+                state = GameState.FINISHED;
+                System.out.println("Team A wins!");
+            }
+            }
+
+            try {
+                Thread.sleep(5000);
+            } catch (Exception e) {}
+            break;
+        }
+
+    }).start();
+}
 
     private Hero chooseHero() {
 

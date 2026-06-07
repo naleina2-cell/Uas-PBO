@@ -1,7 +1,6 @@
 package skill;
 
-public class HealSkill
-        implements Skill {
+public class HealSkill implements Skill {
 
     @Override
     public void activate(){

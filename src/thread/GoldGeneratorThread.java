@@ -5,11 +5,11 @@ public class GoldGeneratorThread extends Thread {
     @Override
     public void run() {
         while (true) {
+            System.out.println("Gold +15");
             try{
-                System.out.println("Gold +15");
-                Thread.sleep(50000);
+                Thread.sleep(30000);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                break;
             }
             }
         }

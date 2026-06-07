@@ -1,7 +1,7 @@
 package exception;
 
 public class DeadHeroException extends Exception {
-    public DeadHeroException() {
-        super("Hero has fallen in battle.");
+    public DeadHeroException(String heroName) {
+        super(heroName + " has fallen in battle.");
     }
 }

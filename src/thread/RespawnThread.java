@@ -1,14 +1,25 @@
 package thread;
+import character.Hero;
 public class RespawnThread extends Thread { 
+    private Hero hero;
+
+    public RespawnThread(Hero hero) {
+        this.hero = hero;
+    }
+
     @Override
     public void run() {
-        while (true) {
             try {
-                System.out.println("Respawn Thread Running");
+                System.out.println(
+                        hero.getName() 
+                        + " will respawn in 5 seconds!"
+                );
                 Thread.sleep(5000);
+                hero.respawn();
+
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             }
         }
-    }
+    

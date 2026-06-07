@@ -17,4 +17,11 @@ public class Creep {
     public int getHp(){
         return hp;
     }
+    public void takeDamage(int damage){
+        hp-= damage;
+    }
+    public boolean isDead() {
+        return hp <= 0;
+
+    }
 }
